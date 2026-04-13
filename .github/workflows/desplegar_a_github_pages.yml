@@ -10,6 +10,7 @@ permissions:
   id-token: write
 env:
   DEPLOY_BASE_URL: ${{ vars.DEPLOY_BASE_URL }}
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -26,7 +27,7 @@ jobs:
       - name: Instalar Nodejs
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
       - name: Instalar las Dependencias del Proyecto
         run: npm ci
       - name: Compilar la página para distribución
